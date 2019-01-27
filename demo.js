@@ -122,23 +122,23 @@ function move() {
     }
     removeClass('kittyBoy');
     kittyBoy();
-    if (this.kittyBoyBody[0][0] == this.kittyGirlX && this.kittyBoyBody[0][1] == this.kittyGirlY) {
+    var kittyHX = this.kittyBoyBody[0][0];
+    var kittyHY = this.kittyBoyBody[0][1];
+    if (kittyHX == this.kittyGirlX && kittyHY == this.kittyGirlY) {
         var heartEndX = this.kittyBoyBody[this.kittyBoyBody.length - 1][0];
         var heartEndY = this.kittyBoyBody[this.kittyBoyBody.length - 1][1];
         switch (this.direct) {
             case 'right':
-                this.kittyBoyBody.push([heartEndX+1, heartEndY, 'heart']);
+                this.kittyBoyBody.push([heartEndX + 1, heartEndY, 'heart']);
                 break;
             case 'left':
-                this.kittyBoyBody.push([heartEndX-1, heartEndY, 'heart']);
+                this.kittyBoyBody.push([heartEndX - 1, heartEndY, 'heart']);
                 break;
             case 'up':
-                this.kittyBoyBody.push([heartEndX, heartEndY+1, 'heart']);
-
+                this.kittyBoyBody.push([heartEndX, heartEndY + 1, 'heart']);
                 break;
             case 'down':
-                this.kittyBoyBody.push([heartEndX, heartEndY-1, 'heart']);
-
+                this.kittyBoyBody.push([heartEndX, heartEndY - 1, 'heart']);
                 break;
             default:
                 break;
@@ -150,6 +150,18 @@ function move() {
         removeClass('kittyGirl');
         kittyGirl();
 
+    }
+    if(kittyHX < 0 || kittyHX > mapW/20){
+        console.log(111);
+    }
+    if(kittyHY < 0 || kittyHY > mapH/20){
+        console.log(111);
+    }
+
+    for(var i = 1; i < this.kittyBoyBody.length; i++){
+        if(kittyHX == kittyBoyBody[i][0] && kittyHY == kittyBoyBody[i][1]){
+            console.log(111);
+        }
     }
 
 }
