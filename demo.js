@@ -14,13 +14,17 @@
 // 游戏结束：显示游戏结束页面，分数为心心数量-3，按钮改为播放按钮
 
 
-var scoreBox = document.getElementById('score');
+
 var content = document.getElementById('content');
 var startPage = document.getElementById('startPage');
 var kittyBoyMove;
 var speed = 200;
 var lose = document.getElementById('lose');
+var scoreBox = document.getElementById('score');
 var endScore = document.getElementById('endScore');
+var close = document.getElementById('close');
+
+
 
 init();
 
@@ -249,5 +253,8 @@ function bindEvent() {
     document.onkeydown = function (e) {
         var code = e.keyCode;
         setDerict(code);
+    }
+    close.onclick = function(){
+        lose.style.display = 'none';
     }
 }
