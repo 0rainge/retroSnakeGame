@@ -15,56 +15,176 @@
 
 var content = document.getElementById('content');
 var startPage = document.getElementById('startPage');
+var kittyBoyMove;
+var speed = 200;
 
-init(); 
+init();
 
-function init(){
+function init() {
+
     //地图
     this.mapW = parseInt(getComputedStyle(content).width);
     this.mapH = parseInt(getComputedStyle(content).height);
     this.mapDiv = content;
+
     //食物
-    this.foodW = 20;
-    this.foodH = 20;
-    this.foodX = 0;
-    this.foodY = 0;
-    
+    this.kittyGirlW = 20;
+    this.kittyGirlH = 20;
+    this.kittyGirlX = 0;
+    this.kittyGirlY = 0;
+
     //大猫咪
-    this.kittyW = 20;
-    this.kittyH = 20;
+    this.kittyBoyW = 20;
+    this.kittyBoyH = 20;
     //数据结构：X值，Y值，头或尾
-    this.kittyBody = [[3,1,'kitty'],[2,1,'heart'],[1,1,'heart']];
+    this.kittyBoyBody = [
+        [3, 1, 'kittyBoy'],
+        [2, 1, 'heart'],
+        [1, 1, 'heart']
+    ];
+
+    //游戏属性
+    this.direct = 'right';
+    this.right = false;
+    this.left = false;
+    this.up = true;
+    this.down = true;
+
+
     startGame();
 }
 
-function startGame(){
-    food();
-    kittyInit();
+function startGame() {
+    kittyGirl();
+    kittyBoy();
+    kittyBoyMove = setInterval(function(){
+        move();
+    },speed)
+    bindEvent();
 }
 
-function food(){
-    var food =document.createElement('div');
-     food.style.width = this.foodW +'px';
-     food.style.height = this.foodH + 'px';
-     food.style.position = 'absolute';
-      this.foodX = Math.floor(Math.random()*(this.mapW/20));
-      this.foodY = Math.floor(Math.random()*(this.mapH/20));
-      food.style.left = this.foodX * 20 + 'px';
-      food.style.top = this.foodY * 20 + 'px';
-      this.mapDiv.appendChild(food).setAttribute('class','food');
+function kittyGirl() {
+    var kittyGirl = document.createElement('div');
+    kittyGirl.style.width = this.kittyGirlW + 'px';
+    kittyGirl.style.height = this.kittyGirlH + 'px';
+    kittyGirl.style.position = 'absolute';
+    this.kittyGirlX = Math.floor(Math.random() * (this.mapW / 20));
+    this.kittyGirlY = Math.floor(Math.random() * (this.mapH / 20));
+    kittyGirl.style.left = this.kittyGirlX * 20 + 'px';
+    kittyGirl.style.top = this.kittyGirlY * 20 + 'px';
+    this.mapDiv.appendChild(kittyGirl).setAttribute('class', 'kittyGirl');
 }
 
-function kittyInit(){
+function kittyBoy() {
 
-    for(var i = 0; i < this.kittyBody.length; i++){
-        var kitty = document.createElement('div');
-        kitty.style.width = this.kittyW + 'px';
-        kitty.style.height = this. kittyH + 'px';
-        kitty.style.position = 'absolute';
-        kitty.style.left = this.kittyBody[i][0] * 20 +'px';
-        kitty.style.top = this.kittyBody[i][1] * 20 +'px';
-        kitty.classList.add(this.kittyBody[i][2]); 
-        this.mapDiv.appendChild(kitty).classList.add('kitty');
+    for (var i = 0; i < this.kittyBoyBody.length; i++) {
+        var kittyBoy = document.createElement('div');
+        kittyBoy.style.width = this.kittyBoyW + 'px';
+        kittyBoy.style.height = this.kittyBoyH + 'px';
+        kittyBoy.style.position = 'absolute';
+        kittyBoy.style.left = this.kittyBoyBody[i][0] * 20 + 'px';
+        kittyBoy.style.top = this.kittyBoyBody[i][1] * 20 + 'px';
+        kittyBoy.classList.add(this.kittyBoyBody[i][2]);
+        this.mapDiv.appendChild(kittyBoy).classList.add('kittyBoy');
+        switch(this.direct){
+        case 'right':
+            kittyBoy.style.transform = 'scale(-1,1)';
+            break;
+        case 'left':
+            break;
+        case 'up':
+            // 
+            break;
+        case 'down':
+            
+            break;
+        default:
+            break;
+        }
     }
 
+}
+
+function move() {
+    for (var i = this.kittyBoyBody.length-1; i > 0; i--) {
+        this.kittyBoyBody[i][0] = this.kittyBoyBody[i - 1][0];
+        this.kittyBoyBody[i][1] = this.kittyBoyBody[i - 1][1];
+    }
+    switch (this.direct) {
+        case 'right':
+            this.kittyBoyBody[0][0] += 1;
+            break;
+        case 'left':
+            this.kittyBoyBody[0][0] -= 1;
+            break;
+        case 'up':
+            this.kittyBoyBody[0][1] -= 1;
+            break;
+        case 'down':
+            this.kittyBoyBody[0][1] += 1;
+            break;
+        default:
+            break;
+    }
+    removeClass('kittyBoy');
+    kittyBoy();
+   
+}
+
+
+function removeClass(className) {
+    var ele = document.getElementsByClassName(className);
+    while (ele.length > 0) {
+        ele[0].parentElement.removeChild(ele[0]);
+    }
+}
+
+function setDerict(code) {
+    switch (code) {
+        case 37:
+            if (this.left == true) {
+                this.direct = 'left';
+                this.left = false;
+                this.right = false;
+                this.up = true;
+                this.down = true;
+            }
+            break;
+        case 38:
+            if (this.up == true) {
+                this.direct = 'up';
+                this.left = true;
+                this.right = true;
+                this.up = false;
+                this.down = false;
+            }
+            break;
+        case 39:
+            if (this.right == true) {
+                this.direct = 'right';
+                this.left = false;
+                this.right = false;
+                this.up = true;
+                this.down = true;
+            }
+            break;
+        case 40:
+            if (this.down == true) {
+                this.direct = 'down';
+                this.left = true;
+                this.right = true;
+                this.up = false;
+                this.down = false;
+            }
+            break;
+        default:
+            break;
+    }
+}
+
+function bindEvent() {
+    document.onkeydown = function (e) {
+        var code = e.keyCode;
+        setDerict(code);
+    }
 }
