@@ -13,6 +13,7 @@
 
 // 游戏结束：显示游戏结束页面，分数为心心数量-3，按钮改为播放按钮
 
+var scoreBox = document.getElementById('score');
 var content = document.getElementById('content');
 var startPage = document.getElementById('startPage');
 var kittyBoyMove;
@@ -49,6 +50,7 @@ function init() {
     this.left = false;
     this.up = true;
     this.down = true;
+    this.score = 0;
 
 
     startGame();
@@ -128,6 +130,13 @@ function move() {
     }
     removeClass('kittyBoy');
     kittyBoy();
+    if(this.kittyBoyBody[0][0] == this.kittyGirlX &&this.kittyBoyBody[0][1] == this.kittyGirlY){
+        this.score += 1;
+        scoreBox.innerHTML = this.score;
+        removeClass('kittyGirl');
+        kittyGirl();
+        
+    }
    
 }
 
