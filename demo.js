@@ -13,7 +13,8 @@
 
 // 游戏结束：显示游戏结束页面，分数为心心数量-3，按钮改为播放按钮
 
-var content = document.getElementById('content')
+var content = document.getElementById('content');
+var startPage = document.getElementById('startPage');
 
 init(); 
 
@@ -22,4 +23,27 @@ function init(){
     this.mapW = parseInt(getComputedStyle(content).width);
     this.mapH = parseInt(getComputedStyle(content).height);
     this.mapDiv = content;
+    //食物
+    this.foodW = 20;
+    this.foodH = 20;
+    this.foodX = 0;
+    this.foodY = 0;
+    startGame();
+}
+
+function startGame(){
+    food();
+    // kitty();
+}
+
+function food(){
+    var food =document.createElement('div');
+     food.style.width = this.foodW +'px';
+     food.style.height = this.foodH + 'px';
+     food.style.position = 'absolute';
+      this.foodX = Math.floor(Math.random()*(this.mapW/20));
+      this.foodY = Math.floor(Math.random()*(this.mapH/20));
+      food.style.left = this.foodX * 20 + 'px';
+      food.style.top = this.foodY * 20 + 'px';
+      this.mapDiv.appendChild(food).setAttribute('class','food');
 }
