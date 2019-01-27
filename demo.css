@@ -132,3 +132,13 @@
     background-image: url(./img/fish.png);
     background-size: 100% 100%;
 }
+
+.kitty{
+    background-image: url(./img/cat.jpeg);
+    background-size: 100% 100%;
+}
+
+.heart{
+    background-image: url(./img/heart.png);
+    background-size:100% 100%;
+}

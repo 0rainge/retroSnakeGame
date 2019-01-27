@@ -28,12 +28,18 @@ function init(){
     this.foodH = 20;
     this.foodX = 0;
     this.foodY = 0;
+    
+    //大猫咪
+    this.kittyW = 20;
+    this.kittyH = 20;
+    //数据结构：X值，Y值，头或尾
+    this.kittyBody = [[3,1,'kitty'],[2,1,'heart'],[1,1,'heart']];
     startGame();
 }
 
 function startGame(){
     food();
-    // kitty();
+    kittyInit();
 }
 
 function food(){
@@ -46,4 +52,19 @@ function food(){
       food.style.left = this.foodX * 20 + 'px';
       food.style.top = this.foodY * 20 + 'px';
       this.mapDiv.appendChild(food).setAttribute('class','food');
+}
+
+function kittyInit(){
+
+    for(var i = 0; i < this.kittyBody.length; i++){
+        var kitty = document.createElement('div');
+        kitty.style.width = this.kittyW + 'px';
+        kitty.style.height = this. kittyH + 'px';
+        kitty.style.position = 'absolute';
+        kitty.style.left = this.kittyBody[i][0] * 20 +'px';
+        kitty.style.top = this.kittyBody[i][1] * 20 +'px';
+        kitty.classList.add(this.kittyBody[i][2]); 
+        this.mapDiv.appendChild(kitty).classList.add('kitty');
+    }
+
 }
