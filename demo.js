@@ -13,11 +13,14 @@
 
 // 游戏结束：显示游戏结束页面，分数为心心数量-3，按钮改为播放按钮
 
+
 var scoreBox = document.getElementById('score');
 var content = document.getElementById('content');
 var startPage = document.getElementById('startPage');
 var kittyBoyMove;
 var speed = 200;
+var lose = document.getElementById('lose');
+var endScore = document.getElementById('endScore');
 
 init();
 
@@ -28,7 +31,7 @@ function init() {
     this.mapH = parseInt(getComputedStyle(content).height);
     this.mapDiv = content;
 
-    //食物
+    //大猫咪的真爱
     this.kittyGirlW = 20;
     this.kittyGirlH = 20;
     this.kittyGirlX = 0;
@@ -51,6 +54,7 @@ function init() {
     this.up = true;
     this.down = true;
     this.score = 0;
+    scoreBox.innerHTML = this.score;
 
 
     startGame();
@@ -151,21 +155,45 @@ function move() {
         kittyGirl();
 
     }
-    if(kittyHX < 0 || kittyHX > mapW/20){
-        console.log(111);
+    if (kittyHX < 0 || kittyHX > mapW / 20) {
+        relodGame();
     }
-    if(kittyHY < 0 || kittyHY > mapH/20){
-        console.log(111);
+    if (kittyHY < 0 || kittyHY > mapH / 20) {
+        relodGame();
     }
 
-    for(var i = 1; i < this.kittyBoyBody.length; i++){
-        if(kittyHX == kittyBoyBody[i][0] && kittyHY == kittyBoyBody[i][1]){
-            console.log(111);
+    for (var i = 1; i < this.kittyBoyBody.length; i++) {
+        if (kittyHX == kittyBoyBody[i][0] && kittyHY == kittyBoyBody[i][1]) {
+            relodGame();
         }
     }
 
 }
 
+function relodGame() {
+    removeClass('kittyBoy');
+    removeClass('kittyGril');
+    clearInterval(kittyBoyMove);
+    this.kittyBoyBody = [
+        [3, 1, 'kittyBoy'],
+        [2, 1, 'heart'],
+        [1, 1, 'heart']
+    ];
+    //游戏属性
+    this.direct = 'right';
+    this.right = false;
+    this.left = false;
+    this.up = true;
+    this.down = true;
+    
+    
+    lose.style.display = 'block';
+    endScore.innerHTML = this.score; 
+    this.score = 0;
+    scoreBox.innerHTML = this.score;
+
+
+}
 
 function removeClass(className) {
     var ele = document.getElementsByClassName(className);
