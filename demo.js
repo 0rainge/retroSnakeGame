@@ -59,9 +59,9 @@ function init() {
 function startGame() {
     kittyGirl();
     kittyBoy();
-    kittyBoyMove = setInterval(function(){
+    kittyBoyMove = setInterval(function () {
         move();
-    },speed)
+    }, speed)
     bindEvent();
 }
 
@@ -88,27 +88,19 @@ function kittyBoy() {
         kittyBoy.style.top = this.kittyBoyBody[i][1] * 20 + 'px';
         kittyBoy.classList.add(this.kittyBoyBody[i][2]);
         this.mapDiv.appendChild(kittyBoy).classList.add('kittyBoy');
-        switch(this.direct){
-        case 'right':
-            kittyBoy.style.transform = 'scale(-1,1)';
-            break;
-        case 'left':
-            break;
-        case 'up':
-            // 
-            break;
-        case 'down':
-            
-            break;
-        default:
-            break;
+        switch (this.direct) {
+            case 'right':
+                kittyBoy.style.transform = 'scale(-1,1)';
+                break;
+            default:
+                break;
         }
     }
 
 }
 
 function move() {
-    for (var i = this.kittyBoyBody.length-1; i > 0; i--) {
+    for (var i = this.kittyBoyBody.length - 1; i > 0; i--) {
         this.kittyBoyBody[i][0] = this.kittyBoyBody[i - 1][0];
         this.kittyBoyBody[i][1] = this.kittyBoyBody[i - 1][1];
     }
@@ -130,14 +122,36 @@ function move() {
     }
     removeClass('kittyBoy');
     kittyBoy();
-    if(this.kittyBoyBody[0][0] == this.kittyGirlX &&this.kittyBoyBody[0][1] == this.kittyGirlY){
+    if (this.kittyBoyBody[0][0] == this.kittyGirlX && this.kittyBoyBody[0][1] == this.kittyGirlY) {
+        var heartEndX = this.kittyBoyBody[this.kittyBoyBody.length - 1][0];
+        var heartEndY = this.kittyBoyBody[this.kittyBoyBody.length - 1][1];
+        switch (this.direct) {
+            case 'right':
+                this.kittyBoyBody.push([heartEndX+1, heartEndY, 'heart']);
+                break;
+            case 'left':
+                this.kittyBoyBody.push([heartEndX-1, heartEndY, 'heart']);
+                break;
+            case 'up':
+                this.kittyBoyBody.push([heartEndX, heartEndY+1, 'heart']);
+
+                break;
+            case 'down':
+                this.kittyBoyBody.push([heartEndX, heartEndY-1, 'heart']);
+
+                break;
+            default:
+                break;
+        }
+
+
         this.score += 1;
         scoreBox.innerHTML = this.score;
         removeClass('kittyGirl');
         kittyGirl();
-        
+
     }
-   
+
 }
 
 
