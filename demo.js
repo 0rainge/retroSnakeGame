@@ -38,13 +38,9 @@ bindEvent();
 function init() {
 
     //地图
-    // this.mapW = parseInt(getComputedStyle(home).width);
-    // this.mapH = parseInt(getComputedStyle(home).height);
+
     this.mapW = parseInt(getComputedStyle(content).width);
     this.mapH = parseInt(getComputedStyle(content).height);
-    // this.mapW = parseInt(content.width);
-    // this.mapH = parseInt(content.height);
-    // this.mapDiv = content;
     this.mapDiv = content;
 
     //大猫咪的真爱
@@ -84,13 +80,8 @@ function startGame() {
     content.style.display = 'block';
     kittyGirl();
     kittyBoy();
-    // kittyBoyMove = setInterval(function () {
-    //     move();
-    // }, speed);
-
     bindEvent();
-    // console.log(mapH);
-    // console.log(mapW);
+
 }
 
 function kittyGirl() {
@@ -129,9 +120,7 @@ function kittyBoy() {
 }
 
 function move() {
-    // console.log(mapW,mapH);
-    // console.log(kittyHX,kittyHY);
-    // 
+
 
     for (var i = this.kittyBoyBody.length - 1; i > 0; i--) {
         this.kittyBoyBody[i][0] = this.kittyBoyBody[i - 1][0];
@@ -158,10 +147,6 @@ function move() {
     var kittyHX = this.kittyBoyBody[0][0];
     var kittyHY = this.kittyBoyBody[0][1];
 
-    console.log("-----------------")
-    console.log(mapW,mapH);
-    console.log(kittyHX,kittyHY);
-    console.log(kittyGirlW,kittyGirlW);
 
     if (kittyHX == this.kittyGirlX && kittyHY == this.kittyGirlY) {
         var heartEndX = this.kittyBoyBody[this.kittyBoyBody.length - 1][0];
@@ -327,28 +312,12 @@ function setDerict(code) {
                 this.down = false;
             }
             break;
+        case 32:
+            startAndPaush();
+            break;
         default:
             break;
     }
-}
-
-function bindEvent() {
-    document.onkeydown = function (e) {
-        var code = e.keyCode;
-        setDerict(code);
-    }
-    close.onclick = function () {
-        lose.style.display = 'none';
-        this.score = 0;
-        scoreBox.innerHTML = this.score;
-    }
-    startBtn.onclick = function () {
-        startAndPaush();
-    }
-    startP.onclick = function () {
-        startAndPaush();
-    }
-
 }
 
 function startAndPaush() {
@@ -369,10 +338,34 @@ function startAndPaush() {
     } else {
         startP.setAttribute('src', './img/start2.png');
         clearInterval(kittyBoyMove);
+        startPaushBool = true;
         document.onkeydown = function (e) {
+            if(e.keyCode == 32){
+                this.startPaushBool = true;
+                startAndPaush();
+            }
             e.returnValue = false;
             return false;
         }
-        startPaushBool = true;
+        
     }
+}
+
+function bindEvent() {
+    document.onkeydown = function (e) {
+        var code = e.keyCode;
+        setDerict(code);
+    }
+    close.onclick = function () {
+        lose.style.display = 'none';
+        this.score = 0;
+        scoreBox.innerHTML = this.score;
+    }
+    startBtn.onclick = function () {
+        startAndPaush();
+    }
+    startP.onclick = function () {
+        startAndPaush();
+    }
+
 }
