@@ -17,16 +17,22 @@
 
 var content = document.getElementById('content');
 var startPage = document.getElementById('startPage');
+// var startP = document.getElementById('startPage');
 var kittyBoyMove;
 var speed = 200;
 var lose = document.getElementById('lose');
 var scoreBox = document.getElementById('score');
 var endScore = document.getElementById('endScore');
 var close = document.getElementById('close');
+var startP = document.getElementById('startP');
+var startBtn = document.getElementById('startBtn');
+var startGameBool = true;
+var startPaushBool = true;
 
 
 
 init();
+bindEvent();
 
 function init() {
 
@@ -61,15 +67,20 @@ function init() {
     scoreBox.innerHTML = this.score;
 
 
-    startGame();
+    // startGame();
+    // bindEvent();
 }
 
+
 function startGame() {
+    startPage.style.display = 'none';
+    startP.style.display = 'block';
     kittyGirl();
     kittyBoy();
-    kittyBoyMove = setInterval(function () {
-        move();
-    }, speed)
+    // kittyBoyMove = setInterval(function () {
+    //     move();
+    // }, speed);
+
     bindEvent();
 }
 
@@ -176,7 +187,7 @@ function move() {
 
 function relodGame() {
     removeClass('kittyBoy');
-    removeClass('kittyGril');
+    removeClass('kittyGirl');
     clearInterval(kittyBoyMove);
     this.kittyBoyBody = [
         [3, 1, 'kittyBoy'],
@@ -189,12 +200,17 @@ function relodGame() {
     this.left = false;
     this.up = true;
     this.down = true;
-    
-    
+
+
     lose.style.display = 'block';
-    endScore.innerHTML = this.score; 
+    endScore.innerHTML = this.score;
     this.score = 0;
     scoreBox.innerHTML = this.score;
+
+    startP.setAttribute('src','./img/start2.png');
+
+    startGameBool = true;
+    startPaushBool = true;
 
 
 }
@@ -254,7 +270,40 @@ function bindEvent() {
         var code = e.keyCode;
         setDerict(code);
     }
-    close.onclick = function(){
+    close.onclick = function () {
         lose.style.display = 'none';
+    }
+    startBtn.onclick = function () {
+        startAndPaush();
+    }
+    startP.onclick = function () {
+        startAndPaush();
+    }
+
+}
+
+function startAndPaush() {
+    if (startPaushBool) {
+        if (startGameBool) {
+            startGame();
+            startGameBool = false;
+        }
+        startP.setAttribute('src', './img/pause2.png');
+        document.onkeydown = function (e) {
+            var code = e.keyCode;
+            setDerict(code);
+        }
+        kittyBoyMove = setInterval(function () {
+            move();
+        }, speed); 
+        startPaushBool = false;
+    } else {
+        startP.setAttribute('src', './img/start2.png');
+        clearInterval(kittyBoyMove);
+        document.onkeydown = function (e) {
+            e.returnValue = false;
+            return false;
+        }
+        startPaushBool = true;
     }
 }

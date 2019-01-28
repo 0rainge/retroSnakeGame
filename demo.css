@@ -8,18 +8,18 @@ body {
     overflow: hidden;
 }
 
-.stratPage {
+.startPage {
     width: 100%;
     z-index: 999;
     height: 1000px;
     position: absolute;
     top: 0;
     left: 0;
-    display: none;
+    /* display: none; */
 }
 
 .startBtn {
-    background-image: url('./img/stratGame4.png');
+    background-image: url('./img/startGame4.png');
     height: 80px;
     width: 200px;
     background-size: 100% 100%;
@@ -48,7 +48,7 @@ body {
 }
 
 .left-side img {
-    /* display: none; */
+    display: none;
     margin-left: 50px;
     margin-top: 50px;
     width: 80px;
