@@ -28,6 +28,7 @@ var startP = document.getElementById('startP');
 var startBtn = document.getElementById('startBtn');
 var startGameBool = true;
 var startPaushBool = true;
+var home = document.getElementById('home');
 
 
 
@@ -37,8 +38,13 @@ bindEvent();
 function init() {
 
     //地图
+    // this.mapW = parseInt(getComputedStyle(home).width);
+    // this.mapH = parseInt(getComputedStyle(home).height);
     this.mapW = parseInt(getComputedStyle(content).width);
     this.mapH = parseInt(getComputedStyle(content).height);
+    // this.mapW = parseInt(content.width);
+    // this.mapH = parseInt(content.height);
+    // this.mapDiv = content;
     this.mapDiv = content;
 
     //大猫咪的真爱
@@ -83,6 +89,8 @@ function startGame() {
     // }, speed);
 
     bindEvent();
+    // console.log(mapH);
+    // console.log(mapW);
 }
 
 function kittyGirl() {
@@ -94,6 +102,7 @@ function kittyGirl() {
     this.kittyGirlY = Math.floor(Math.random() * (this.mapH / 20));
     kittyGirl.style.left = this.kittyGirlX * 20 + 'px';
     kittyGirl.style.top = this.kittyGirlY * 20 + 'px';
+
     this.mapDiv.appendChild(kittyGirl).setAttribute('class', 'kittyGirl');
 }
 
@@ -120,6 +129,10 @@ function kittyBoy() {
 }
 
 function move() {
+    // console.log(mapW,mapH);
+    // console.log(kittyHX,kittyHY);
+    // 
+
     for (var i = this.kittyBoyBody.length - 1; i > 0; i--) {
         this.kittyBoyBody[i][0] = this.kittyBoyBody[i - 1][0];
         this.kittyBoyBody[i][1] = this.kittyBoyBody[i - 1][1];
@@ -144,6 +157,12 @@ function move() {
     kittyBoy();
     var kittyHX = this.kittyBoyBody[0][0];
     var kittyHY = this.kittyBoyBody[0][1];
+
+    console.log("-----------------")
+    console.log(mapW,mapH);
+    console.log(kittyHX,kittyHY);
+    console.log(kittyGirlW,kittyGirlW);
+
     if (kittyHX == this.kittyGirlX && kittyHY == this.kittyGirlY) {
         var heartEndX = this.kittyBoyBody[this.kittyBoyBody.length - 1][0];
         var heartEndY = this.kittyBoyBody[this.kittyBoyBody.length - 1][1];
@@ -169,14 +188,24 @@ function move() {
         scoreBox.innerHTML = this.score;
         removeClass('kittyGirl');
         kittyGirl();
-
     }
     if (kittyHX < 0 || kittyHX > mapW / 20) {
+        console.log(mapW / 20);
         relodGame();
     }
     if (kittyHY < 0 || kittyHY > mapH / 20) {
+        console.log(mapW / 20);
         relodGame();
     }
+
+    // if (kittyHX < 0 || kittyHX > mapW) {
+    //     // console.log(mapW / 20);
+    //     relodGame();
+    // }
+    // if (kittyHY < 0 || kittyHY > mapH) {
+    //     // console.log(mapW / 20);
+    //     relodGame();
+    // }
 
     for (var i = 1; i < this.kittyBoyBody.length; i++) {
         if (kittyHX == kittyBoyBody[i][0] && kittyHY == kittyBoyBody[i][1]) {
@@ -207,9 +236,9 @@ function relodGame() {
     lose.style.display = 'block';
     endScore.innerHTML = '亲密度：' + this.score;
     scoreReview(this.score);
-   
+
     scoreBox.innerHTML = this.score;
-     this.score = 0;
+    this.score = 0;
 
     startP.setAttribute('src', './img/start2.png');
 
