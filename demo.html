@@ -1,36 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>贪吃JS橙</title>
+    <title>猫咪故事——郭小橙JS练习</title>
     <link rel="stylesheet" href="demo.css ">
 </head>
+
 <body>
-    <div class="startPage" id = "startPage">
-        <div class="startBtn" id = "startBtn"></div>
+    <div class="startPage" id="startPage">
+        <div class="startBtn" id="startBtn"></div>
     </div>
     <div class="wrapper">
         <div class="left-side">
-            <img src="./img/start2.png" id = 'startP'>
+            <img src="./img/start2.png" id='startP'>
         </div>
         <div class="main">
             <div class="header">
+
                 <div class="score">
                     亲密度：
-                    <span id="score"></span>
+                    <span id="score">
+                    </span>
                 </div>
+                <span class="story">茫茫宇宙中，两只猫咪的故事开始了...</span><br><br>
+                <span class="tip">(按方向键让两只猫咪相遇吧，亲密度会触发不同结局 XD)</span>
+
             </div>
-            <div class="content" id="content"></div>
+            <div class="content" id="content">
+                <img src="./img/home.png" class="home">
+            </div>
         </div>
-        <div class="loser" id = 'lose'>
-             <div class="con">
-                 <div class="close" id = "close"></div>
-                 <div class="loserScore" id = "endScore"> 0 </div>
-             </div>
+        <div class="loser" id='lose'>
+            <div class="con">
+                <div class="close" id="close"></div>
+                <div class="loserScore" id="endScore"> 0 </div>
+            </div>
         </div>
     </div>
+
     <script src="demo.js"></script>
 </body>
+
 </html>

@@ -75,6 +75,7 @@ function init() {
 function startGame() {
     startPage.style.display = 'none';
     startP.style.display = 'block';
+    content.style.display = 'block';
     kittyGirl();
     kittyBoy();
     // kittyBoyMove = setInterval(function () {
@@ -186,6 +187,7 @@ function move() {
 }
 
 function relodGame() {
+    content.style.display = 'none';
     removeClass('kittyBoy');
     removeClass('kittyGirl');
     clearInterval(kittyBoyMove);
@@ -203,14 +205,50 @@ function relodGame() {
 
 
     lose.style.display = 'block';
-    endScore.innerHTML = this.score;
-    this.score = 0;
+    endScore.innerHTML = '亲密度：' + this.score;
+    scoreReview(this.score);
+   
     scoreBox.innerHTML = this.score;
+     this.score = 0;
 
-    startP.setAttribute('src','./img/start2.png');
+    startP.setAttribute('src', './img/start2.png');
 
     startGameBool = true;
     startPaushBool = true;
+
+
+}
+
+function scoreReview(score) {
+    if (score == 0) {
+        endScore.innerHTML = '两个猫咪从未相遇，遗憾的错过彼此了。';
+    } else if (score < 4) {
+        endScore.innerHTML = '猫咪注意到了对方，然后————没有然后了。';
+    } else if (score < 6) {
+        endScore.innerHTML = '猫咪有了好感。';
+    } else if (score < 9) {
+        endScore.innerHTML = '猫咪有了好感，同时开始了解彼此。';
+    } else if (score < 13) {
+        endScore.innerHTML = '猫咪互相吸引，有了恋爱的想法。';
+    } else if (score < 16) {
+        endScore.innerHTML = '猫咪开始了恋爱。';
+    } else if (score < 18) {
+        endScore.innerHTML = '猫咪开始了热恋，聊人生聊理想。';
+    } else if (score < 20) {
+        endScore.innerHTML = '猫咪开始了热恋，为了对方变得越来越好。';
+    } else if (score < 22) {
+        endScore.innerHTML = '猫咪热恋，并且有了结婚的想法。';
+    } else if (score < 26) {
+        endScore.innerHTML = '猫咪组成了有爱的家庭，开始了猫生的新的阶段。';
+    } else if (score < 28) {
+        endScore.innerHTML = '猫咪组成了有爱的家庭，开始了柴米油盐的琐碎而快乐的生活。';
+    } else if (score < 30) {
+        endScore.innerHTML = '猫咪组成了有爱的家庭，有了爱的结晶：小猫咪。';
+    } else if (score < 32) {
+        endScore.innerHTML = '猫咪组成了有爱的家庭，有了小猫咪。';
+    } else {
+        endScore.innerHTML = '猫咪幸福的一起变老，执子之手，与子偕老。';
+    }
 
 
 }
@@ -272,6 +310,8 @@ function bindEvent() {
     }
     close.onclick = function () {
         lose.style.display = 'none';
+        this.score = 0;
+        scoreBox.innerHTML = this.score;
     }
     startBtn.onclick = function () {
         startAndPaush();
@@ -295,7 +335,7 @@ function startAndPaush() {
         }
         kittyBoyMove = setInterval(function () {
             move();
-        }, speed); 
+        }, speed);
         startPaushBool = false;
     } else {
         startP.setAttribute('src', './img/start2.png');

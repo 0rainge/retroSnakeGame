@@ -1,21 +1,27 @@
 * {
     margin: 0;
     padding: 0;
-
+    
 }
 
 body {
     overflow: hidden;
+    width: 100%;
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* border: 1px solid #ffffff; */
+    box-sizing: border-box;
 }
 
 .startPage {
     width: 100%;
     z-index: 999;
-    height: 1000px;
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
     /* display: none; */
+    /* border: 1px solid #ffffff; */
 }
 
 .startBtn {
@@ -30,14 +36,23 @@ body {
     bottom: 0;
     left: 0;
     margin: auto;
+    /* border: 1px solid #ffffff; */
 }
 
 .wrapper {
     width: 100%;
-    height: 1000px;
-    background-image: url('./img/bg.png');
+    height: 102%;
+    background-image: url('./img/bg2.jpg');
     background-size: 100% 100%;
-    position: relative;
+    /* position: relative; */
+    /* border: 1px solid red; */
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
 }
 
 .left-side {
@@ -61,17 +76,17 @@ body {
     left: 25%;
     width: 50%;
     height: 90%;
-    border: 1px solid #ffffff;
+    /* border: 1px solid #ffffff; */
 }
 
 .header {
     width: 100%;
-    height: 80px;
+    height: 100px;
     text-align: center;
 }
 
 .score {
-    line-height: 80px;
+    line-height: 100px;
     color: #ddd;
     font-weight: bolder;
     font-size: 20px;
@@ -79,11 +94,22 @@ body {
 
 .content {
     position: absolute;
-    width: 79.5%;
-    height: 36.5%;
-    left: 10%;
-    top: 34%;
-    border: 1px solid red;
+    /* width: 79.5%;
+    height: 36.5%; */
+    width: 900px;
+    height: 460px;
+    /* left: 10%; */
+    top: 30%;
+    /* background-image: url('img/home.png'); */
+    /* opacity: 0.1; */
+    /* border: 1px solid red; */
+    /* background-color: red; */
+    display: none;
+}
+.home{
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
 }
 
 .loser {
@@ -95,7 +121,8 @@ body {
 }
 
 .loser .con {
-    background-image: url('img/startP.jpg');
+    /* background-image: url('img/startP.jpg'); */
+    background-image: url('img/heart.png');
     background-size: 100% 100%;
     height: 300px;
     width: 400px;
@@ -111,13 +138,13 @@ body {
 .loserScore {
 
     display: block;
-    width: 40px;
+    width: 140px;
     height: 30px;
     position: absolute;
-    top: 42%;
-    left: 40%;
-    color: #222;
-    font-size: 30px;
+    top: 40%;
+    left: 36%;
+    color: #ddd;
+    font-size: 16px;
     font-weight: bolder;
 }
 
@@ -146,4 +173,18 @@ body {
 .heart {
     background-image: url(./img/heart.png);
     background-size: 100% 100%;
+}
+
+.story{
+    display: inline-block;
+    position: relative;
+    color: #ddd;
+    top: 10px;
+    background-color: #222;
+}
+.tip{
+    display: inline-block;
+    position: relative;
+    color: #ddd;
+    top: 700px
 }
