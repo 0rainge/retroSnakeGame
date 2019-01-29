@@ -11,7 +11,7 @@ JS/两只猫咪的爱情故事/贪吃大猫咪/贪吃蛇
 - #### 游戏界面
 ![image](https://github.com/0rainge/retroSnakeGame/blob/master/img/docImg/demo2.jpeg?raw=true)
 - #### 游戏结束界面
-![image](https://github.com/0rainge/retroSnakeGame/blob/master/img/docImg/demo3.jpeg?raw=true)
+![image](https://github.com/0rainge/retroSnakeGame/blob/master/img/docImg/demo3.png?raw=true)
 
 ## 1. HTML：DOM结构
 
