@@ -4,6 +4,15 @@ Play this addictive little JavaScript game
 
 JS/两只猫咪的爱情故事/贪吃大猫咪/贪吃蛇
 
+## 0.界面展示
+
+- #### 游戏开始界面
+![image](https://github.com/0rainge/retroSnakeGame/blob/master/img/imgDoc/demo1.jpeg?raw=true)
+- #### 游戏界面
+![image](https://github.com/0rainge/retroSnakeGame/blob/master/img/imgDoc/demo2.jpeg?raw=true)
+- #### 游戏结束界面
+![image](https://github.com/0rainge/retroSnakeGame/blob/master/img/imgDoc/demo3.jpeg?raw=true)
+
 ## 1. HTML：DOM结构
 
 ```
@@ -13,15 +22,9 @@ JS/两只猫咪的爱情故事/贪吃大猫咪/贪吃蛇
 外部页面——左侧——播放图标
            |
              ——主页面——头——分数div——“分数”
-<<<<<<< HEAD
 	        |	      |	     |
                 |             |       ———分数数字span
 	        |	      |
-=======
-          |       |      |
-                |             |       ———分数数字span
-          |       |
->>>>>>> 0rainge-patch-ReadMe
                 |              ——内容区域
                 |
                  ——失败页面——失败图标——失败分数
