@@ -2,7 +2,7 @@
 
 Play this addictive little JavaScript game
 
-JS/前男友吃屎小游戏
+[JS/前男友吃大便小游戏](https://0rainge.github.io/retroSnakeGame/ "shit-eater game")
 
 ## 0.界面展示
 
