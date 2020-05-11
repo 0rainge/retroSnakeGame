@@ -2,7 +2,7 @@
 
 Play this addictive little JavaScript game
 
-[JS/前男友吃大便小游戏](https://0rainge.github.io/retroSnakeGame/ "shit-eater game")
+JS/前男友吃大便小游戏 [点击加载，第一次比较慢因为要加载背景图片](https://0rainge.github.io/retroSnakeGame/ "shit-eater game")
 
 ## 0.界面展示
 
@@ -45,7 +45,7 @@ Play this addictive little JavaScript game
 4. main随机生成Shit-Eater的真爱shit的位置
 5. Shit-Eater每过一秒钟向当前方向移动一个单位长度
 6. 接受键盘按键向上下左右方向移动
-7. Shit-Eater碰到了真爱：小shit+1，随机再次生成真爱位置
+7. Shit-Eater碰到了真爱shit：小shit+1，随机再次生成真爱位置
 8. Shit-Eater碰到了墙壁游戏结束
 9. 点击暂停按钮，Shit-Eater停止运动，播放按钮改为暂停按钮，点击播放按钮，恢复运动，改为暂停按钮
 
