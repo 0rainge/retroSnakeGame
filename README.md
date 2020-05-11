@@ -2,7 +2,7 @@
 
 Play this addictive little JavaScript game
 
-JS/前男友吃大便小游戏 [点击加载，第一次比较慢因为要加载背景图片](https://0rainge.github.io/retroSnakeGame/ "shit-eater game")
+JS/前男友吃大便小游戏 [点击加载 第一次比较慢因为要加载背景图片](https://0rainge.github.io/retroSnakeGame/ "shit-eater game")
 
 ## 0.界面展示
 

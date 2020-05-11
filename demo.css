@@ -73,7 +73,7 @@ body {
     position: absolute;
     left: 25%;
     width: 50%;
-    height: 90%;
+    height: 600px;
     /* border: 1px solid #ffffff; */
     text-align: center;
 }
@@ -182,9 +182,14 @@ body {
     background-color: #222;
 }
 .tip{
-    display: inline-block;
-    position: relative;
+    width:500px;  
+    height:40px;  
+    text-align: center;
+    line-height: 40px;
+    left:50%;  
+    margin:0 0 0 -250px ;
+    position: fixed;
     color: #ddd;
-    top: 700px;
+    bottom: 30px;
     background-color: #222;
 }
