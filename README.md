@@ -2,16 +2,9 @@
 
 Play this addictive little JavaScript game
 
-JS/前男友吃大便小游戏 [点击加载 第一次比较慢因为要加载背景图片](https://0rainge.github.io/retroSnakeGame/ "shit-eater game")
+JS/前男友吃大便小游戏 [点击加载 第一次比较慢因为要加载背景图片](https://0rainge.github.io/retroSnakeGame/ "shit-eater game")
 
 ## 0.界面展示
-
-- #### 游戏开始界面
-![image](https://github.com/0rainge/retroSnakeGame/blob/master/img/docImg/demo1.jpeg?raw=true)
-- #### 游戏界面
-![image](https://github.com/0rainge/retroSnakeGame/blob/master/img/docImg/demo2.jpeg?raw=true)
-- #### 游戏结束界面
-![image](https://github.com/0rainge/retroSnakeGame/blob/master/img/docImg/demo3.png?raw=true)
 
 ## 1. HTML：DOM结构
 
@@ -45,18 +38,18 @@ JS/前男友吃大便小游戏 [点击加载 第一次比较慢因为要加载
 4. main随机生成Shit-Eater的真爱shit的位置
 5. Shit-Eater每过一秒钟向当前方向移动一个单位长度
 6. 接受键盘按键向上下左右方向移动
-7. Shit-Eater碰到了真爱shit：小shit+1，随机再次生成真爱位置
+7. Shit-Eater碰到了真爱shit：小shit+1，随机再次生成真爱位置
 8. Shit-Eater碰到了墙壁游戏结束
 9. 点击暂停按钮，Shit-Eater停止运动，播放按钮改为暂停按钮，点击播放按钮，恢复运动，改为暂停按钮
 
-- 游戏结束：显示游戏结束页面，分数为Shit-Eater的shit，按钮改为播放按钮
+- 游戏结束：显示游戏结束页面，分数为Shit-Eater的shit，按钮改为播放按钮
 
 ## 3. 实现问题记录
 
 - #### 游戏初始化
 
 init() 初始化参数
-content所有区域都用坐标属性来表示，一个单位长度是一个shit的长度，用坐标乘自身20的宽就是
+content所有区域都用坐标属性来表示，一个单位长度是一个shit的长度，用坐标乘自身20的宽就是
 
 - #### 如何随机生成Shit-Eater真爱位置：
 
@@ -86,10 +79,10 @@ content所有区域都用坐标属性来表示，一个单位长度是一个shi
 1. 条件：位置一样
 2. 分数增加，改变html
 
--  #### 增加尾巴shit：
+-  #### 增加尾巴shit：
 
 1. 确定新增位置坐标
-2. 向其中shit队列push新的shit
+2. 向其中shit队列push新的shit
 
 -  #### 遇到边距/碰到自己：
 
